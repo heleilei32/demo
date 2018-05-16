@@ -5,7 +5,9 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -17,6 +19,10 @@ import java.util.List;
 
 @SpringBootApplication
 @ComponentScan(value = "com.example.controller")
+@ComponentScan(value = "com.example.service")
+@ComponentScan(value = "com.example.dao")
+@EnableJpaRepositories("com.example.dao")
+@EntityScan(value = "com.example.entity")
 public class DemoApplication extends WebMvcConfigurerAdapter{
 
 

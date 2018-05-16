@@ -2,14 +2,32 @@ package com.example.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
+@Table(name = "tbl_student")
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @Column(name = "vc_name")
     private String name;
+    @Column(name = "nb_age")
     private Integer age;
+    @Column(name = "vc_sex")
     private String sex;
 
+    @JSONField (format="yyyy-MM-dd HH:mm:ss")
+    @Column(name = "dt_createTime")
     private Date createTime;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
